@@ -8,6 +8,37 @@ let numeros = document.querySelector('.d-1-3');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.querySelectorAll('.teclado--botao').forEach(qBotao =>{
     qBotao.addEventListener('click',()=>{
         console.log(qBotao.getAttribute('data-key'));
