@@ -7,43 +7,109 @@ let numeros = document.querySelector('.d-1-3');
 
 
 
+let etapaAtual = 0;
+let numero = '';
+
+function comecarEtapa() {
+    let etapa = etapas [etapaAtual];
+    let numeroHtml = '';
+
+    for(let i=0; i< etapa.numeros;i++){
+        if(i === 0){
+        numeroHtml += `<div class = 'numero pisca'></div>`;
+        }else {
+            numeroHtml += `<div class = 'numero'></div>`;
+        }
+        
+    }
+ 
+    seuVotoPara.style.display = 'none';
+    cargo.innerHTML = etapa.titulo;
+    descricao.innerHTML = '';
+    aviso.style.display = 'none';
+    lateral.innerHTML = '';
+    numeros.innerHTML = numeroHtml;
+} 
 
 
+comecarEtapa()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.querySelectorAll('.teclado--botao').forEach(qBotao =>{
-    qBotao.addEventListener('click',()=>{
-        console.log(qBotao.getAttribute('data-key'));
+function atualizaInterface() {
+    let etapa = etapas[etapaAtual];
+    let candidato = etapa.candidatos.filter((item)=>{
+        if(item.numero === numero){
+            return true;
+        }else {
+            return false;
+        }
     });
-});
+    if(candidato.length > 0) {
+        candidato= candidato[0];
+        seuVotoPara.style.display = 'block';
+        aviso.style.display = 'block';
+        descricao.innerHTML = `Nome: ${candidato.nome} <br/> Partido ${candidato.partido}`;
+
+        let fotosHTml = ` <div class="d-1-image">
+        <img src="assets/img/${candidato.fotosHTml}" alt="">
+        ${candidato.fotos[i].legenda};
+        </div>`;
+
+        lateral.innerHTML = fotosHTml;
+    };
+};
+
+function clicou (e) {
+    let elNumero = document.querySelector('.numero.pisca');
+    if(elNumero != null) {
+        elNumero.innerHTML = e;
+        numero = `${numero} ${e}`;
+
+        elNumero.classList.remove('pisca');
+        if(elNumero.nextElementSibling !== null) {
+            elNumero.nextElementSibling.classList.add('pisca')
+        }else {
+            atualizaInterface();
+        }
+        
+    }
+}
+
+
+function branco () {
+    console.log('Clicou em BRANCO')
+}
+
+function corrige () {
+    console.log('Clicou em CORRIGE')
+}
+
+function confirma () {
+    console.log('Clicou em CONFIRMA')
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
