@@ -9,20 +9,24 @@ let numeros = document.querySelector('.d-1-3');
 
 let etapaAtual = 0;
 let numero = '';
+let votoBranco = false;
+let votos = [];
+
 
 function comecarEtapa() {
-    let etapa = etapas [etapaAtual];
+    let etapa = etapas[etapaAtual];
     let numeroHtml = '';
 
-    for(let i=0; i< etapa.numeros;i++){
-        if(i === 0){
-        numeroHtml += `<div class = 'numero pisca'></div>`;
+    for(let i=0; i< etapa.numeros; i++){
+        if(i === 0) {
+            numeroHtml += '<div class="numero pisca"></div>';
         }else {
-            numeroHtml += `<div class = 'numero'></div>`;
+            numeroHtml += '<div class="numero"></div>';
         }
         
+
+        
     }
- 
     seuVotoPara.style.display = 'none';
     cargo.innerHTML = etapa.titulo;
     descricao.innerHTML = '';
@@ -44,6 +48,7 @@ function atualizaInterface() {
             return false;
         }
     });
+    console.log(candidato)
     if(candidato.length > 0) {
         candidato = candidato[0];
         seuVotoPara.style.display = 'block';
@@ -68,7 +73,7 @@ function atualizaInterface() {
 
 function clicou (e) {
     let elNumero = document.querySelector('.numero.pisca');
-    if(elNumero != null) {
+    if(elNumero !== null) {
         elNumero.innerHTML = e;
         numero = `${numero} ${e}`;
 
