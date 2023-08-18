@@ -48,7 +48,7 @@ function atualizaInterface() {
             return false;
         }
     });
-    console.log(candidato)
+    console.log('candidato', candidato.nome);
     if(candidato.length > 0) {
         candidato = candidato[0];
         seuVotoPara.style.display = 'block';
